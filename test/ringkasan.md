@@ -192,3 +192,120 @@ Set dataSet = {8, 9, 7, 6, 5};
 // spread Collection -> [...data]
 Set copyDataSet = {...data, 11};
 print(copyDataSet.last);
+
+11. null safety
+
+/\*\*
+
+- 1.  ? -> variabel diperbolehkan null
+- 2.  ?? -> menghandle null
+- 3.  ! -> sudah pasti atau dengan sesungguhnya bahwa data ada (tidak null)
+- 4.  late -> untuk memastikan bahw sebelum dieksekusi , wajib diinisialisasi
+      \*/
+
+void main() {
+late String? name;
+
+// name = "arjun";
+
+printNama(name);
+}
+
+void printNama(String? parameterNama) {
+print(parameterNama);
+}
+
+12. OOP :
+    class <-> contoh class kendaraan {blablabla} <-> bisa mengakses : kendaraaan.type
+
+13.
+
+a. positional constructor
+
+class kendaraan {
+String? plat;
+String? tahun;
+
+kendaraan(String? a, String? b){
+plat = a;
+tahun = b;
+}
+}
+
+b. named constructor
+
+class kendaraan {
+
+String? plat;
+String? tahun;
+
+kendaraan({String? a, String? b}){
+plat = a;
+tahun = b;
+}
+}
+
+c. direct positional constructor
+
+class kendaraan {
+String? tahun;
+String? plat;
+
+kendaraan(this.tahun, this.plat);
+}
+
+d. direct named constructor
+
+class kendaraan {
+String? tahun;
+String? plat;
+
+kendaraan({this.plat, this.tahun});
+}
+
+<!-- ketika mengganti atribut, tidak bisa mengganti atribut privat atau yang ada "underscore" -->
+
+1. membuat atribut menjadi privat
+
+class kendaraan {
+String? tahun;
+String? \_plat;
+
+kendaraan({this.plat, this.tahun}); // ini akan error
+
+- agar tidak error maka, buat constructor sebagai berikut.
+  kendaraan({this.plat, String? tahun}){
+  \_tahun = tahun;
+  }
+
+- membuat method untuk menampilkan attribut privat
+  String? tahun(){
+  return \_tahun;
+  }
+
+- membuat method untuk mengubah attribut privat
+  void gantiTahun(String? tahunGanti){
+  \_tahun = tahunGanti;
+  }
+
+}
+
+var pakaian1 = Pakaian(jenis: "celana", warna: "orange", ukuran: "X");
+print(
+"${pakaian1.jenis} - warna ${pakaian1.warna} - ukuran ${pakaian1.ukuran}");
+  print("ganti ukuran");
+  // pakaian1.ukuran = "XL";
+  // pakaian1.gantiUkuran("XL"); // sebelum memakai setter
+  pakaian1.setUkuran = "XL"; // setelah memakai setter
+  print(
+      "${pakaian1.jenis} - warna ${pakaian1.warna} - ukuran ${pakaian1.ukuran}");
+
+print("--------------------------------------");
+
+var pakaian2 = Pakaian(jenis: "kimono", warna: "hitam", ukuran: "S");
+print(
+"${pakaian2.jenis} - warna ${pakaian2.warna} - ukuran : ${pakaian2.ukuran}");
+
+
+
+14. inheritance & abstract class
